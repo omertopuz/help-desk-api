@@ -1,0 +1,75 @@
+
+admin-server/target/
+admin-server/.mvn/
+
+assigner-service/target/
+assigner-service/.mvn/
+
+auth-server/target/
+auth-server/.mvn/
+
+category-service/target/
+category-service/.mvn/
+
+cloud-config-server/target/
+cloud-config-server/.mvn/
+
+cloud-gateway/target/
+cloud-gateway/.mvn/
+
+file-service/target/
+file-service/.mvn/
+
+mails-service/target/
+mails-service/.mvn/
+
+posts-service/target/
+posts-service/.mvn/
+
+service-registry/target/
+service-registry/.mvn/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db

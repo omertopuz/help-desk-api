@@ -1,0 +1,66 @@
+
+server:
+  port: 7070
+
+#spring:
+#  security:
+#    user:
+#      name: omer
+#      password: 0
+#      roles: ADMIN, USER
+#
+#security:
+#  oauth2:
+#    client:
+#      client-id: mobile
+#      client-secret: pin
+#      authorized-grant-types: refresh_token,authorization_code,password,client_credentials
+#      scope: READ,WRITE
+#    authorization:
+#      check-token-access: permitAll
+
+spring:
+  datasource:
+    url: jdbc:h2:file:${user.dir}/data/db/auth-server-db #console url->jdbc:h2:file:.\spring-cloud-gatway-hystrix-master\data\db\auth-server-db
+    driverClassName: org.h2.Driver
+    username: sa
+    password: 0
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+    path: /h2
+  allowed:
+    resources: /h2-console/**
+
+logging:
+  level:
+    org:
+      hibernate:
+        type: trace
+
+security:
+  #  oauth2:
+  #    authorization:
+  #      check-token-access: permitAll
+  #      token-key-access: permitAll
+
+  jwt:
+    key-store: classpath:keystore.jks #${user.dir}/repo-config/keys/auth-server-keystore.jks
+    key-store-password: letmein
+    key-pair-alias: mytestkey
+    key-pair-password: changeme
+    default-access-token-timeout: 1800
+    default-refresh-token-timeout: 86400
+    max-failed-login-attempts-for-account-lock: 5
+    failed-login-attempt-account-lock-timeout: 900
+

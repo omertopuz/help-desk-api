@@ -1,0 +1,10 @@
+INSERT INTO oauth_client_details (client_id, client_secret, web_server_redirect_uri, scope, access_token_validity, refresh_token_validity, resource_ids, authorized_grant_types, additional_information) VALUES ('mobile', '{bcrypt}$2a$10$De3AD6u83WQEWRBarrNzXOcvNM6K8BSnjiWVjYpQfEm2TvY/uhY1K', 'http://localhost:8080/code', 'READ,WRITE', '3600', '10000', 'inventory,payment', 'authorization_code,password,refresh_token,implicit', '{}');
+INSERT INTO PERMISSION (id,name) VALUES  (1,'create_profile'), (2,'read_profile'), (3,'update_profile'), (4,'delete_profile');
+
+INSERT INTO role (id,name) VALUES (1,'ROLE_admin'),(2,'ROLE_operator');
+
+INSERT INTO permission_role (permission_id, ROLE_ID) VALUES (1,1),(2,1),(3,1),(4,1),(2,2),(3,2);
+insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'omer','{bcrypt}$2a$10$ZVFZ5BXImpsW0GfQL90Fd.qUfb7hObuCeLAdkMOmYwWfyYMdQXJ5W', 'omer@omer.com', '1', '1', '1', '1');
+insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked)  VALUES ('2', 'ali', '{bcrypt}$2a$10$ZVFZ5BXImpsW0GfQL90Fd.qUfb7hObuCeLAdkMOmYwWfyYMdQXJ5W', 'ali@omer.com', '1', '1', '1', '1');
+
+INSERT INTO role_user (role_id, user_id) VALUES (1, 1),(2, 2);

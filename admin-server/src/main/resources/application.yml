@@ -1,0 +1,5 @@
+server:
+  port: 8392
+spring:
+  application:
+    name: admin-server

@@ -1,0 +1,21 @@
+
+server:
+  port: 9010
+
+
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:9050/eureka/
+#  instance:
+#    hostname: localhost
+
+
+spring:
+  application:
+    name: category-service
+  data:
+    mongodb:
+      uri: mongodb://192.168.27.8:27017/category-db

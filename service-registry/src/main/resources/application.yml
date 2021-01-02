@@ -1,0 +1,8 @@
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+#  datacenter: Turkey
+#  environment: production
+server:
+  port: 8761    

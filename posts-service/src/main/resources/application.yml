@@ -1,0 +1,90 @@
+
+server:
+  port: 9011
+
+
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:9050/eureka/
+#  instance:
+#    hostname: localhost
+
+
+spring:
+  application:
+    name: posts-service
+  data:
+    mongodb:
+      uri: mongodb://192.168.27.8:27017/post-db
+
+#  cloud:
+#    stream:
+#      kafka:
+#        binder:
+#          brokers: 192.168.27.9:9092
+#          auto-create-topics: true
+#          configuration:
+#            auto.offset.reset: latest
+#      bindings:
+#        output:
+#          destination: new-post
+#          group: new-post-group
+#          contentType: application/json
+
+
+#  cloud:
+#    stream:
+#      bindings:
+#        output:
+#          destination: newPost
+#          group: newPost-group
+#          contentType: application/json
+#          consumer:
+#            durableSubscription: true
+#            concurrency: 10
+#      binder:
+#        brokers: 192.168.27.9:9092
+#        autoAddPartitions: true
+#        minPartitionCount: 10
+#        auto-offset-reset: earliest
+
+#  cloud:
+#    stream:
+#      kafka:
+#        default:
+#          consumer:
+#            autoCommitOffset: true
+#        bindings:
+#          receiver-in-0:
+#            consumer:
+#              autoCommitOffset: true
+#        binder:
+#          brokers: localhost:9092
+#          autoAddPartitions: true
+#          minPartitionCount: 10
+#          auto-offset-reset: earliest
+#      bindings:
+#        receiver-in-0:
+#          binder: kafka
+#          destination: Topic1,Topic2
+#          content-type: text/plain;charset=UTF-8
+#          group: input-group-1
+#          max-attempts: 5
+#          back-off-initial-interval: 10000
+#          back-off-max-interval: 30000
+#        emitter-out-0:
+#          binder: kafka
+#          producer:
+#            partition-count:  2
+#            partition-key-extractor-name: EmitterPartitionKey
+#        erroremitter-out-0:
+#          binder: kafka
+#          destination: error
+#        error:
+#          binder: kafka
+#          destination: error
+#
+#  spring.cloud.stream.function.definition: receiver;emitter;erroremitter
