@@ -29,15 +29,9 @@ posts-service/.mvn/
 service-registry/target/
 service-registry/.mvn/
 
-# compiled output
-/dist
-/tmp
-/out-tsc
-# Only exists if Bazel was run
-/bazel-out
 
 # dependencies
-/node_modules
+help-desk-ui/node_modules
 
 # profiling files
 chrome-profiler-events*.json

@@ -28,7 +28,6 @@
         <module>mails-service</module>
         <module>posts-service</module>
         <module>service-registry</module>
-        <module>help-desk-ui</module>
     </modules>
 
 </project>
