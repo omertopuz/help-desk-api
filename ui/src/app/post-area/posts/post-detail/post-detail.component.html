@@ -1,0 +1,121 @@
+
+<!-- <div style="overflow-y: scroll; height: 50vh;"> -->
+<div class="scroll-frame" id="style-3" *ngIf="postDetail">
+  <h6>{{postDetail.title}}</h6>
+  <hr>
+
+  <p>{{postDetail.content}}</p>
+
+  <!-- <form>
+    <div class="form-group mr-2">
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="type your solution"></textarea>
+    </div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <button type="button" class="btn btn-outline-success">Send & Resolve</button>
+      <button type="button" class="btn btn-outline-secondary">Send & Close</button>
+      <button type="button" class="btn btn-outline-success">Resolve</button>
+      <button type="button" class="btn btn-outline-secondary">Close</button>
+    </div>
+  </form> -->
+
+  <hr>
+
+  <p><i class="fas fa-comment-alt"></i>Comments</p>
+  
+  <ul class="list-group">
+    <li class="list-group-item"><div class="alert alert-warning w-75" role="alert">Cras justo odio</div></li>
+    <li class="list-group-item"><div class="alert alert-success ml-auto w-75" role="alert">Dapibus ac facilisis in </div></li>
+    <li class="list-group-item"><div class="alert alert-warning w-75" role="alert">Morbi leo risus</div></li>
+    <li class="list-group-item"><div class="alert alert-success ml-auto w-75" role="alert">Porta ac consectetur ac</div></li>
+    <li class="list-group-item"><div class="alert alert-warning w-75" role="alert">Vestibulum at eros</div></li>
+    <li class="list-group-item mr-2">
+      <div class="input-group">
+        <!-- <input type="text" class="form-control" placeholder="Send new comment" aria-label="send note" aria-describedby="basic-addon2"> -->
+        <textarea class="input-group-append col-sm-11" id="exampleFormControlTextarea1" rows="2" placeholder="send new comment"></textarea>
+        <div class="input-group-append col-lg-1">
+          <button class="btn btn-outline-secondary" type="button"><i class="fas fa-comment"></i></button>
+        </div>
+      </div>
+  
+    </li>
+  </ul>
+
+  <hr>
+  <p><i class="fas fa-file-alt"></i>Attachments</p>
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input type="file" class="custom-file-input" id="inputGroupFile02">
+      <label class="custom-file-label" for="inputGroupFile02">Add new Attachment</label>
+    </div>
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-info" aria-placeholder="Upload"><i class="fas fa-file-upload"></i></button>
+      <!-- <span class="input-group-text" id="file-uploader">Upload</span> -->
+    </div>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Files</th>
+        <th scope="col">Date</th>
+        <th scope="col">#</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">File - 1 .pdf</th>
+        <td class="text-center">26.12.2020</td>
+        <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+      </tr>
+      <tr>
+        <th scope="row">File - 2 .pdf</th>
+        <td class="text-center">26.12.2020</td>
+        <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+      </tr>
+      <tr>
+        <th scope="row">File - 2 .pdf</th>
+        <td class="text-center">26.12.2020</td>
+        <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <hr>
+  <p><i class="fas fa-history"></i>Post History</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Process</th>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Created</th>
+        <td>user-1</td>
+        <td class="text-center">26.12.2020</td>
+      </tr>
+      <tr>
+        <th scope="row">Forwarded</th>
+        <td>user-1</td>
+        <td class="text-center">26.12.2020</td>
+      </tr>
+      <tr>
+        <th scope="row">Resolved</th>
+        <td>user-2</td>
+        <td class="text-center">26.12.2020</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+<div class="scroll-frame text-center" id="style-3" *ngIf="!postDetail">
+  <span class="border h-100 align-middle">
+    <i class="fas fa-envelope fa-7x mt-5"></i>
+  </span>
+  <hr>
+  <div class="alert alert-warning" role="alert">
+    Choose a post to view the detail
+  </div>
+</div>

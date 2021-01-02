@@ -1,0 +1,91 @@
+
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+
+body {
+    padding-top: 56px;
+  }
+  
+  /* .carousel-item {
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+  .portfolio-item {
+    margin-bottom: 30px;
+  } */
+
+
+/* .scroll-frame {
+  height: 95%;
+  position: absolute;
+  width: 95%;
+  margin-top: 10px;
+  overflow-x: hidden;
+  overflow-y: visible;
+} */
+
+.scroll-frame {
+  margin-top: 20px;
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+
+#style-3::-webkit-scrollbar-track
+{
+	/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+	background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+#style-3::-webkit-scrollbar-thumb
+{
+	background-color: #57b5c5;
+}
+
+
+      /* Remove the navbar's default margin-bottom and rounded borders */
+      .navbar {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+  
+      /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+      .row.content {height: 85vh}
+  
+      /* Set gray background color and 100% height */
+      .sidenav {
+        padding-top: 20px;
+        background-color: #f1f1f1;
+        height: 100%;
+      }
+  
+      /* Set black background color, white text and some padding */
+      footer {
+        background-color: #555;
+        color: white;
+        padding: 15px;
+      }
+  
+      /* On small screens, set height to 'auto' for sidenav and grid */
+      @media screen and (max-width: 767px) {
+        .sidenav {
+          height: auto;
+          padding: 15px;
+        }
+        .row.content {height:auto;}
+      }
+

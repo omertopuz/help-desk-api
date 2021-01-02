@@ -1,0 +1,69 @@
+
+<div class="card border-secondary ml-3 mt-2">
+    <div class="card-header">New Post</div>
+    <div class="card-body text-secondary">
+        <form>
+            <div class="form-group">
+              <label for="inputAddress">Title</label>
+              <input type="text" class="form-control" id="postTitle" placeholder="Type your post title">
+            </div>
+        
+            <div class="form-group">
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Type your post content"></textarea>
+            </div>
+
+            <app-category-list></app-category-list>
+        
+        
+              <div class="form-group">
+                <label for="inputState">Related Post</label>
+                <select id="inputState" class="form-control">
+                  <option selected>Choose related post...</option>
+                  <option>...</option>
+                </select>
+              </div>
+           
+        
+            <hr>
+          <p><i class="fas fa-file-alt"></i>Attachments</p>
+          <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile02">
+              <label class="custom-file-label" for="inputGroupFile02">Add new Attachment</label>
+            </div>
+            <div class="input-group-append">
+              <button type="button" class="btn btn-outline-info" aria-placeholder="Upload"><i class="fas fa-file-upload"></i></button>
+              <!-- <span class="input-group-text" id="file-uploader">Upload</span> -->
+            </div>
+          </div>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Files</th>
+                <th scope="col">Date</th>
+                <th scope="col">#</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">File - 1 .pdf</th>
+                <td class="text-center">26.12.2020</td>
+                <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+              </tr>
+              <tr>
+                <th scope="row">File - 2 .pdf</th>
+                <td class="text-center">26.12.2020</td>
+                <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+              </tr>
+              <tr>
+                <th scope="row">File - 2 .pdf</th>
+                <td class="text-center">26.12.2020</td>
+                <td><button type="button" class="btn btn-outline-info"><i class="fas fa-file-download"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+        
+            <button type="submit" class="btn btn-primary btn-block">Send</button>
+          </form>
+    </div>
+</div>

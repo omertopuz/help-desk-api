@@ -1,0 +1,124 @@
+<!-- <nav aria-label="breadcrumb" class="mt-2 small">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><button class="btn-outline-secondary" type="button">first</button></li>
+    <li class="breadcrumb-item active" aria-current="page">c1 - c2</li>
+    <li class="breadcrumb-item"><a href="#">total</a></li>
+  </ol>
+</nav> -->
+
+<nav aria-label="Page navigation example" class="mt-2 ml-2">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo; first</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link">c1 - c2</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">last &raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<div class="scroll-frame" id="style-3">
+  <div class="row mb-4 mr-2 ml-1">
+
+    <div class="card border-danger">
+      <h6 class="card-header text-white bg-danger text-truncate"><span class="badge badge-light">9 </span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</h6>
+      
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="card-footer">
+        <div class="row d-flex">
+          <div class="ml-2">
+            <span><i class="fas fa-paperclip fa-1x"></i></span>
+          </div>
+          <div class="ml-auto small">
+            <button type="button" class="ml-2 btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"><i class="fas fa-share-square">Forward</i></button>
+            <button type="button" class="ml-2 btn btn-outline-success btn-sm"><i class="fas fa-check-circle">Resolve</i></button>
+            <button type="button" class="ml-2 btn btn-outline-secondary btn-sm"><i class="fas fa-times-circle">Close</i></button>
+            <a routerLink="/post-detail" class="ml-2 btn btn-outline-info btn-sm"><i class="fas fa-info-circle">Detail</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="row mb-4 mr-2 ml-1">
+    <div class="card border-warning">
+      <h6 class="card-header text-white bg-warning text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</h6>
+      
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="card-footer">
+        <div class="row d-flex">
+          <div class="ml-2">
+            <span><i class="fas fa-paperclip fa-1x"></i></span>
+          </div>
+          <div class="ml-auto">
+            <button type="button" class="ml-2 btn btn-outline-success btn-sm"><i class="fas fa-check-circle">Resolve</i></button>
+            <button type="button" class="ml-2 btn btn-outline-secondary btn-sm"><i class="fas fa-times-circle">Close</i></button>
+            <a routerLink="/post-detail" class="ml-2 btn btn-outline-info btn-sm"><i class="fas fa-info-circle">Detail</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-4 mr-2 ml-1">
+    <div class="card border-success">
+      <h6 class="card-header text-white bg-success text-truncate">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</h6>
+      
+      <div class="card-body">
+        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+      </div>
+      <div class="card-footer">
+        <div class="row d-flex">
+          <div class="ml-2">
+            <span><i class="fas fa-paperclip fa-1x"></i></span>
+          </div>
+          <div class="ml-auto">
+            <button type="button" class="ml-2 btn btn-outline-success btn-sm"><i class="fas fa-check-circle">Resolve</i></button>
+            <button type="button" class="ml-2 btn btn-outline-secondary btn-sm"><i class="fas fa-times-circle">Close</i></button>
+            <a routerLink="/post-detail" class="ml-2 btn btn-outline-info btn-sm"><i class="fas fa-info-circle">Detail</i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal forward -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Forward</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <app-category-list></app-category-list>
+          <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Type your post content"></textarea>
+        </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Forward</button>
+      </div>
+    </div>
+  </div>
+</div>
