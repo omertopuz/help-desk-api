@@ -6,6 +6,7 @@ import org.helpdesk.posts.model.dto.NewPostDto;
 import org.helpdesk.posts.model.dto.UpdatePostDto;
 import org.helpdesk.posts.model.dto.response.AttachmentResponseDto;
 import org.helpdesk.posts.model.dto.response.CommentResponseDto;
+import org.helpdesk.posts.model.dto.response.PostIdListInCategoryResponse;
 import org.helpdesk.posts.model.dto.response.PostResponseDto;
 import org.helpdesk.posts.service.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,5 +105,14 @@ public class PostsResource {
         return ResponseEntity.ok().body("comment deleted");
     }
 
-
+    @GetMapping(value = "/posts")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<PostIdListInCategoryResponse> getPostsInCategory(@RequestParam(name = "categoryId") String categoryId){
+        return ResponseEntity.ok(postsService.getPostsInCategory(categoryId));
+    }
+//    @GetMapping(value = "/posts")
+//    @ResponseStatus(HttpStatus.OK)
+//    public PostIdListInCategoryResponse getPostsInCategory(@RequestParam(name = "categoryId") String categoryId){
+//        return postsService.getPostsInCategory(categoryId);
+//    }
 }

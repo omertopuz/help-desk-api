@@ -6,6 +6,8 @@ import org.helpdesk.category.model.document.Category;
 import org.helpdesk.category.model.request.CategoryRequestDto;
 import org.helpdesk.category.model.response.CategoryListResponseDto;
 import org.helpdesk.category.model.response.CategoryResponseDto;
+import org.helpdesk.category.model.response.PostIdListInCategoryResponse;
+import org.helpdesk.category.model.response.PostServiceIdListResponse;
 import org.helpdesk.category.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,9 @@ public class CategoryService {
 
     @Autowired
     private CategoryRepo categoryRepo;
+
+    @Autowired
+    private FeignClientPostService feignClientPostService;
 
     @Autowired
     private ObjectMapper modelMapper;
@@ -109,6 +114,12 @@ public class CategoryService {
                 .map(c->{
                     // TODO : check for the posts that belong to this category. If it exists then give a message or set the categoryId property of these posts as NULL.
                     // TODO : delete all categories belongs to this category.
+
+                    PostIdListInCategoryResponse response = feignClientPostService.getPostsWithGivenCategoryId(categoryId);
+                    if(response!=null && response.getPostIdList()!=null && response.getPostIdList().size()>0){
+                        throw new ServiceException(String.format("Can not be deleted. There are some posts which is assigned to category you try to delete. Post Ids: %s"
+                                ,String.join(",",response.getPostIdList().stream().map(p->p.getId()).collect(Collectors.toList()))));
+                    }
 
                     categoryRepo.deleteByParentCategoryIdLike(c.getId());
                     categoryRepo.delete(c);

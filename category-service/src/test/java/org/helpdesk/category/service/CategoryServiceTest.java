@@ -1,25 +1,37 @@
 package org.helpdesk.category.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.assertj.core.internal.bytebuddy.matcher.ElementMatchers;
+import org.helpdesk.category.exception.ServiceException;
 import org.helpdesk.category.model.document.Category;
 import org.helpdesk.category.model.request.CategoryDto;
 import org.helpdesk.category.model.request.CategoryRequestDto;
 import org.helpdesk.category.model.response.CategoryResponseDto;
+import org.helpdesk.category.model.response.PostIdListInCategoryResponse;
+import org.helpdesk.category.model.response.PostServiceIdListResponse;
 import org.helpdesk.category.repository.CategoryRepo;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CategoryServiceTest {
@@ -29,6 +41,9 @@ class CategoryServiceTest {
 
     @Autowired
     private CategoryService categoryService;
+
+    @MockBean
+    private FeignClientPostService feignClientPostService;
 
     @Autowired
     private CategoryRepo categoryRepo;
@@ -110,4 +125,37 @@ class CategoryServiceTest {
         assertThat(mainCategories).hasSizeGreaterThanOrEqualTo(1);
     }
 
+    @Test
+    public void deleteCategory_InCaseNoPostBelongToCategory_ThenExpectSuccessMessage(){
+        String categoryId = getTestData().get(0).getId();
+
+        Mockito.when(feignClientPostService.getPostsWithGivenCategoryId(ArgumentMatchers.anyString()))
+                .thenReturn(new PostIdListInCategoryResponse());
+        categoryService.deleteCategory(categoryId);
+
+        Exception ex = assertThrows(ServiceException.class,()->{
+            categoryService.getCategory(categoryId);
+        });
+        testDataCategory = null;
+        assertThat(ex).isNotNull();
+        assertThat(ex.getMessage()).contains("not found");
+    }
+
+    @Test
+    public void deleteCategory_InCasePostBelongToCategory_ThenExceptionThrown(){
+        String categoryId = getTestData().get(0).getId();
+
+        Mockito.when(feignClientPostService.getPostsWithGivenCategoryId(ArgumentMatchers.anyString()))
+                .thenReturn(new PostIdListInCategoryResponse(
+                        Stream.of(new PostServiceIdListResponse(categoryId))
+                                .collect(Collectors.toList())
+                ));
+
+        Exception ex = assertThrows(ServiceException.class,()->{
+            categoryService.deleteCategory(categoryId);
+        });
+
+        assertThat(ex).isNotNull();
+        assertThat(ex.getMessage()).contains("Can not be deleted");
+    }
 }

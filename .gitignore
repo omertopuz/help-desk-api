@@ -2,8 +2,9 @@
 admin-server/target/
 admin-server/.mvn/
 
-assigner-service/target/
-assigner-service/.mvn/
+#assigner-service/target/
+#assigner-service/.mvn/
+assigner-service/
 
 auth-server/target/
 auth-server/.mvn/
@@ -17,11 +18,14 @@ cloud-config-server/.mvn/
 cloud-gateway/target/
 cloud-gateway/.mvn/
 
-file-service/target/
-file-service/.mvn/
+#file-service/target/
+#file-service/.mvn/
+#
+#mails-service/target/
+#mails-service/.mvn/
 
-mails-service/target/
-mails-service/.mvn/
+file-service/
+mails-service/
 
 posts-service/target/
 posts-service/.mvn/

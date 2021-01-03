@@ -2,12 +2,14 @@ package org.helpdesk.posts.resource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.helpdesk.posts.exception.ServiceException;
+import org.helpdesk.posts.model.document.Posts;
 import org.helpdesk.posts.model.dto.AttachmentDto;
 import org.helpdesk.posts.model.dto.CommentDto;
 import org.helpdesk.posts.model.dto.NewPostDto;
 import org.helpdesk.posts.model.dto.UpdatePostDto;
 import org.helpdesk.posts.model.dto.response.AttachmentResponseDto;
 import org.helpdesk.posts.model.dto.response.CommentResponseDto;
+import org.helpdesk.posts.model.dto.response.PostIdListInCategoryResponse;
 import org.helpdesk.posts.model.dto.response.PostResponseDto;
 import org.helpdesk.posts.service.PostsService;
 import org.helpdesk.posts.util.EnumPostStates;
@@ -63,7 +65,7 @@ class PostRestControllerTest {
                 .orElseGet(()->{
                     NewPostDto request = new NewPostDto("hey! commander, something strange coming towards us"
                             ,"It is likely to hit us. should be stopped before reaching "
-                            ,"5fecec004ef1572eec2cb730"
+                            ,"5"
                             ,Stream.of(new AttachmentDto("1123","q-file-1.pdf")
                     ,new AttachmentDto("1127","q-2-file.jpg")
                     ,new AttachmentDto("1128","file-3.txt"))
@@ -274,5 +276,18 @@ class PostRestControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(b->assertThat(b.getResponse().getContentAsString()).contains("delete"))
                 .andReturn();
+    }
+
+    @Test
+    public void getPostInCategory_HttpStatusOk_ExpectOneRecord() throws Exception {
+        MvcResult result = mockMvc.perform(MockMvcRequestBuilders
+                .get(API_ENDPOINT)
+        .param("categoryId",getTestData().getCategoryId()))
+                .andReturn();
+
+        PostIdListInCategoryResponse p = mapper.readValue(result.getResponse().getContentAsString(), PostIdListInCategoryResponse.class);
+        assertThat(p).isNotNull();
+        assertThat(p.getPostIdList()).hasSizeGreaterThanOrEqualTo(1);
+        assertThat(p.getPostIdList().get(0).getId()).isEqualTo(getTestData().getId());
     }
 }

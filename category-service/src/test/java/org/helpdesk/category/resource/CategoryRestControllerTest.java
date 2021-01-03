@@ -12,16 +12,19 @@ import org.helpdesk.category.model.request.UpdateCategoryDto;
 import org.helpdesk.category.model.response.CategoryListResponseDto;
 import org.helpdesk.category.model.response.CategoryResponseDto;
 import org.helpdesk.category.service.CategoryService;
+import org.helpdesk.category.service.FeignClientPostService;
 import org.helpdesk.category.service.HierarchicalCategoryService;
 import org.helpdesk.category.util.HierarchicalCategorySearchUtil;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
+import org.mockito.Mockito;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -45,6 +48,9 @@ class CategoryRestControllerTest {
 
     @Autowired
     protected MockMvc mockMvc;
+
+    @MockBean
+    private FeignClientPostService feignClientPostService;
 
     private static ObjectMapper mapper;
     private static Logger log;
@@ -157,6 +163,7 @@ class CategoryRestControllerTest {
     @Test
     public void deleteCategory_HttpStatusOk_SearchGivenCategoryId_ThenGetServiceException_NotFound() throws Exception {
         CategoryResponseDto del = testDataCategory.getSubCategoryList().get(0);
+
         mockMvc.perform(MockMvcRequestBuilders
                 .delete(API_ENDPOINT+"/{categoryId}", del.getId()))
                 .andExpect(res->assertThat(res.getResponse().getContentAsString())

@@ -9,6 +9,7 @@ import org.helpdesk.posts.model.dto.NewPostDto;
 import org.helpdesk.posts.model.dto.UpdatePostDto;
 import org.helpdesk.posts.model.dto.response.AttachmentResponseDto;
 import org.helpdesk.posts.model.dto.response.CommentResponseDto;
+import org.helpdesk.posts.model.dto.response.PostIdListInCategoryResponse;
 import org.helpdesk.posts.model.dto.response.PostResponseDto;
 import org.helpdesk.posts.repository.PostRepo;
 import org.helpdesk.posts.util.EnumPostStates;
@@ -169,4 +170,7 @@ public class PostsService {
                 });
     }
 
+    public PostIdListInCategoryResponse getPostsInCategory(String categoryId){
+        return new PostIdListInCategoryResponse(postRepo.findByCategoryId(categoryId));
+    }
 }
